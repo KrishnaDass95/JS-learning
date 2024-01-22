@@ -24,4 +24,14 @@ const filterOutput = numbers.filter((item, index) => {
 })
 console.log(filterOutput); // [ 1, 3, 5 ]
 
-// find -> returns
+// find -> returns the first element based on your condition from an array
+const foundVal = numbers.find(item => item > 4)
+console.log(foundVal) // 5
+
+// reduce -> used to reduce the array into a single value, good for summation of values in an array
+const sum = numbers.reduce((accumulator, currentValue) => {
+    return accumulator+currentValue
+},0)
+
+console.log(sum)
+
