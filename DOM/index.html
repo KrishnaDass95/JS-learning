@@ -1,0 +1,85 @@
+<!-- DOM stands for document object model, its a tree like structure of HTML elements, all of which are objects
+    All these objects are rendered as a hieraricahl tree and we can manipulate these nodes
+the parent is the root element  -->
+
+<!-- Todo 
+    1. Create index.html
+    2. Create a div parent with 4 elenents inside
+    3. Make script tag at end select parentElement and print it
+    4. Read through some DOM properties and methods
+    5. textContent property of an element gives you all the text of the parent and its descendandts without HTML markups
+    6. innerHTML -> returns the HTML markups as well as the text
+    7. innerText -> Shows the same as textContent but also the visible content of an element. Whatever UI you see on screen is retrieved with innerText
+    8. Different DOM methods - by ID, by classname, by tag name -> when it returns a list, you can use index [0] based on the list of items returned
+    9. if you access an index in an array in JS without it being present it will throw output as undefined
+    10. Query selector can be used on tagnames, it is used to find the first occurance of something
+    11. If you use query selector on an element that's not present it will not throw an error or undefined. it shows NULL
+    12. Undefined is for JS and HTML throws HTML
+    13. HTML collection vs Node list -> The former prints only HTML elements while latter prints everything in the node, from tag to text and whatever is present
+    As Nodes can be anything in DOM. Each thing in the DOM is a node which can be anything from text to tags but HTML collection is only the HTML tags 
+    div#parent
+index.html:40 
+        Para 1
+        Para 2
+        para 3
+        Para 4
+    
+index.html:41 
+        <p class="para-class">Para 1</p>
+        <p class="para-class">Para 2</p>
+        <p class="para-class">para 3</p>
+        <p class="para-class">Para 4</p>
+    
+index.html:42 Para 1
+
+Para 2
+
+para 3
+
+Para 4
+
+
+ -->
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML quick recap</title>
+ </head>
+ <body>
+    <h1 class="head">Header</h1>
+    <div id="parent">
+        <p class="para-class">Para 1</p>
+        <p class="para-class">Para 2</p>
+        <p class="para-class">para 3</p>
+        <p id="remove-yo" class="para-class">Para 4</p>
+        <button class="btn">Click me</button>
+    </div>
+    <script>
+        let parent = document.getElementById("parent")
+        console.log(parent);
+        const para = document.getElementsByClassName('para-class')
+        console.log(parent.textContent);
+        console.log(parent.innerHTML);
+        console.log(parent.innerText)
+        
+        const header = document.getElementsByClassName('head')[0]
+        const btn = document.querySelector('.btn')
+        btn.addEventListener('click', ()=> {
+            header.textContent = "SUP"
+
+        })
+
+        // create element and append it 
+        const newParaElement = document.createElement('p')
+        newParaElement.innerText = "Hey dude I am dynamically adding an element"
+        parent.appendChild(newParaElement)
+
+        // remove element
+        const removeEle = document.getElementById('remove-yo')
+        removeEle.remove()
+    </script>
+ </body>
+ </html>
